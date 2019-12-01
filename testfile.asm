@@ -1,37 +1,24 @@
 	.data
 	.text
 	.globl main
-	
-main:
-	# Variável X
-	li $t0, 2500
-	
-	# Variável t
-	li $t1, 1
-	
-	# Variável d
-	li, $t2, 2
-	
-	# Variável s
-	li $t3, 4
-	
-	# Variável r
-	li, $s0, 1
-	
-while:
-	bne $t1, 1, end_while
-	
-	add $s0, $s0, 1
-	add $t2, $t2, 2
-	add $t3, $t3, $t2
-	add $t3, $t3, 1
-	
-	ble $t3, $t0, while
-	
-	li $t1, 0
 
-end_while:
-	#Imprimir o int
-	li $v0, 1
-	move $a0, $s0
-	syscall
+main:
+	add $s0,$t0,$t1
+	sub $s0, $t0, $t1
+	addi $s0, $t0, 1
+	mult $s0, $t0
+	div $s0, $t0
+	and $s0,$t0,$t1
+	or $s0,$t0,$t1
+	xor $s0,$t0,$t1
+	mfhi $s0
+	mflo $s0
+	sll $s0, $t0, $t1
+	srl $s0, $t0, $t1
+	slt $s0,$t0,$t1
+	bne $s0,$t0, Label
+	beq $s0,$t0, Label
+	lw $s0, 1($t0)
+	sw $s0, 1($t0)
+	j Label
+	jr $s0
